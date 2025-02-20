@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="application.MainController">
+
+    <top>
+        <VBox spacing="10">
+            <Label text="Task Management System" style="-fx-font-size: 18px;"/>
+
+            <!-- ✅ Summary Stats Section -->
+            <HBox spacing="15">
+                <Label text="Total Tasks: "/>
+                <Label fx:id="totalTasksLabel"/>
+                <Label text="Completed: "/>
+                <Label fx:id="completedTasksLabel"/>
+                <Label text="Delayed: "/>
+                <Label fx:id="delayedTasksLabel"/>
+                <Label text="Due in 7 Days: "/>
+                <Label fx:id="dueSoonTasksLabel"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <TextField fx:id="titleSearchField" promptText="Search by Title"/>
+                <ComboBox fx:id="categoryFilterComboBox"/>
+                <ComboBox fx:id="priorityFilterComboBox"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="10">
+            <TableView fx:id="taskTable">
+                <columns>
+                    <TableColumn fx:id="titleColumn" text="Title"/>
+                    <TableColumn fx:id="categoryColumn" text="Category"/>
+                    <TableColumn fx:id="priorityColumn" text="Priority"/>
+                    <TableColumn fx:id="statusColumn" text="Status"/>
+                </columns>
+            </TableView>
+
+            <!-- ✅ Reminder Management Section -->
+            <VBox spacing="10">
+                <Label text="Reminders"/>
+                <TableView fx:id="reminderTable">
+                    <columns>
+                        <TableColumn fx:id="reminderTaskColumn" text="Task"/>
+                        <TableColumn fx:id="reminderTypeColumn" text="Reminder Type"/>
+                    </columns>
+                </TableView>
+
+                <HBox spacing="10">
+                    <Button fx:id="editReminderButton" text="Edit Reminder" onAction="#editReminder"/>
+                    <Button fx:id="deleteReminderButton" text="Delete Reminder" onAction="#deleteReminder"/>
+                </HBox>
+            </VBox>
+
+            <!-- ✅ Add Reminder Section -->
+            <HBox spacing="10">
+                <Label text="Add Reminder"/>
+                <ComboBox fx:id="reminderTypeComboBox"/>
+                <DatePicker fx:id="reminderDatePicker"/>
+                <Button fx:id="addReminderButton" text="Add Reminder" onAction="#addReminder"/>
+            </HBox>
+        </VBox>
+    </center>
+
+    <bottom>
+        <VBox spacing="10">
+            <HBox spacing="10">
+                <TextField fx:id="titleField" promptText="Task Title"/>
+                <TextField fx:id="descriptionField" promptText="Description"/>
+                <ComboBox fx:id="categoryComboBox"/> <!-- ✅ Category Selection -->
+                <ComboBox fx:id="priorityComboBox"/> <!-- ✅ Priority Selection -->
+            </HBox>
+
+            <HBox spacing="10">
+                <Button fx:id="addTaskButton" text="Add Task" onAction="#addTask"/>
+                <Button fx:id="updateTaskButton" text="Update Task" onAction="#updateTask"/> <!-- ✅ Edit Task -->
+                <Button fx:id="deleteTaskButton" text="Delete Task" onAction="#deleteTask"/> <!-- ✅ Delete Task -->
+            </HBox>
+
+            <!-- ✅ Category Management Section -->
+            <HBox spacing="10">
+                <Label text="Categories"/>
+                <ComboBox fx:id="categoryListComboBox"/>
+                <TextField fx:id="newCategoryField" promptText="New Category Name"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Button fx:id="addCategoryButton" text="Add Category" onAction="#addCategory"/>
+                <Button fx:id="renameCategoryButton" text="Rename Category" onAction="#renameCategory"/>
+                <Button fx:id="deleteCategoryButton" text="Delete Category" onAction="#deleteCategory"/>
+            </HBox>
+
+            <!-- ✅ Priority Management Section -->
+            <HBox spacing="10">
+                <Label text="Priorities"/>
+                <ComboBox fx:id="priorityListComboBox"/>
+                <TextField fx:id="newPriorityField" promptText="New Priority Name"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Button fx:id="addPriorityButton" text="Add Priority" onAction="#addPriority"/>
+                <Button fx:id="renamePriorityButton" text="Rename Priority" onAction="#renamePriority"/>
+                <Button fx:id="deletePriorityButton" text="Delete Priority" onAction="#deletePriority"/>
+            </HBox>
+
+        </VBox>
+    </bottom>
+
+</BorderPane>
